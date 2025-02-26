@@ -3,6 +3,10 @@ import { useState } from "react";
 
 function App() {
   const [apiUsers, setApiUsers] = useState([]);
+
+  const [loading, setLoading] = useState(true);
+
+  const [error, setError] = useState(null);
   const [searchItem, setSearchItem] = useState("");
   const [filteredUsers, setFilteredUsers] = useState([]);
 
@@ -14,7 +18,14 @@ function App() {
         // update the filteredUsers state
         setFilteredUsers(data.users);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+
+        setError(err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
 
   const handleInputChange = (e) => {
@@ -36,7 +47,11 @@ function App() {
         onChange={handleInputChange}
         placeholder="Type to search"
       />
-      {filteredUsers.length === 0 ? (
+      {loading && <p>Loading...</p>}
+
+      {error && <p>There was an error loading the users</p>}
+
+      {!loading && !error && filteredUsers.length === 0 ? (
         <p>No users found</p>
       ) : (
         <ul>
