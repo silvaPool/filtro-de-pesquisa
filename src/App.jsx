@@ -7,15 +7,15 @@ function App() {
   const [filteredUsers, setFilteredUsers] = useState([]);
 
   useEffect(() => {
-    fetch('https://dummyjson.com/users')
-      .then(response => response.json())
-      .then(data => {
-        setApiUsers(data.users)
+    fetch("https://dummyjson.com/users")
+      .then((response) => response.json())
+      .then((data) => {
+        setApiUsers(data.users);
         // update the filteredUsers state
-        setFilteredUsers(data.users)
+        setFilteredUsers(data.users);
       })
-      .catch(err => console.log(err))
-  }, [])
+      .catch((err) => console.log(err));
+  }, []);
 
   const handleInputChange = (e) => {
     const searchTerm = e.target.value;
@@ -36,11 +36,15 @@ function App() {
         onChange={handleInputChange}
         placeholder="Type to search"
       />
-      <ul>
-        {filteredUsers.map((user) => (
-          <li key={user.id}>{user.firstName}</li>
-        ))}
-      </ul>
+      {filteredUsers.length === 0 ? (
+        <p>No users found</p>
+      ) : (
+        <ul>
+          {filteredUsers.map((user) => (
+            <li key={user.id}>{user.firstName}</li>
+          ))}
+        </ul>
+      )}
     </>
   );
 }
