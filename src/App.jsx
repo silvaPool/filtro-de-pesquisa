@@ -22,7 +22,7 @@ function App() {
     setSearchItem(searchTerm);
 
     const filteredItems = users.filter((user) =>
-      users.firstName.toLowerCase().includes(searchTerm.toLowerCase())
+      user.firstName.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     setFilteredUsers(filteredItems);
