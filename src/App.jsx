@@ -2,22 +2,23 @@ import { useEffect } from "react";
 import { useState } from "react";
 import ItemsList from "./components/ItemList";
 import Input from "./components/Input";
-import { useGetUsers } from "./hooks/useGetUsers";
+import { useGetEmployees } from "./hooks/useGetEmployees";
+
 
 function App() {
-  const { users, loading, error } = useGetUsers();
+  const { employees, loading, error } = useGetEmployees();
 
   const [filteredUsers, setFilteredUsers] = useState([]);
 
   useEffect(() => {
-    if (Object.keys(users).length > 0) {
-      setFilteredUsers(users)
+    if (Object.keys(employees).length > 0) {
+      setFilteredUsers(employees)
     }
-  }, [users]);
+  }, [employees]);
 
   const filterItems = (searchTerm) => {
-    const filteredItems = users.filter((user) =>
-      user.firstName.toLowerCase().includes(searchTerm.toLowerCase())
+    const filteredItems = employees.filter((employee) =>
+      employee.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     setFilteredUsers(filteredItems);
