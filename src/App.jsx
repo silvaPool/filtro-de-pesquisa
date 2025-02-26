@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import ItemsList from "./components/ItemList";
+import Input from "./components/Input";
 
 function App() {
   const [apiUsers, setApiUsers] = useState([]);
@@ -7,7 +9,7 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   const [error, setError] = useState(null);
-  const [searchItem, setSearchItem] = useState("");
+
   const [filteredUsers, setFilteredUsers] = useState([]);
 
   useEffect(() => {
@@ -28,10 +30,7 @@ function App() {
       });
   }, []);
 
-  const handleInputChange = (e) => {
-    const searchTerm = e.target.value;
-    setSearchItem(searchTerm);
-
+  const filterItems = (searchTerm) => {
     const filteredItems = apiUsers.filter((user) =>
       user.firstName.toLowerCase().includes(searchTerm.toLowerCase())
     );
@@ -41,25 +40,12 @@ function App() {
 
   return (
     <>
-      <input
-        type="text"
-        value={searchItem}
-        onChange={handleInputChange}
-        placeholder="Type to search"
-      />
+      <Input onChangeCallback={filterItems} />
       {loading && <p>Loading...</p>}
 
       {error && <p>There was an error loading the users</p>}
 
-      {!loading && !error && filteredUsers.length === 0 ? (
-        <p>No users found</p>
-      ) : (
-        <ul>
-          {filteredUsers.map((user) => (
-            <li key={user.id}>{user.firstName}</li>
-          ))}
-        </ul>
-      )}
+      {!loading && !error && <ItemsList items={filteredUsers} />}
     </>
   );
 }
