@@ -8,20 +8,24 @@ import { useGetEmployees } from "./hooks/useGetEmployees";
 function App() {
   const { employees, loading, error } = useGetEmployees();
 
-  const [filteredUsers, setFilteredUsers] = useState([]);
+  const [filteredEmployees, setFilteredEmployees] = useState([]);
 
   useEffect(() => {
     if (Object.keys(employees).length > 0) {
-      setFilteredUsers(employees)
+      setFilteredEmployees(employees)
     }
   }, [employees]);
 
   const filterItems = (searchTerm) => {
     const filteredItems = employees.filter((employee) =>
-      employee.name.toLowerCase().includes(searchTerm.toLowerCase())
+      employee.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      employee.job.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      employee.admission_date.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      employee.phone.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      employee.image.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
-    setFilteredUsers(filteredItems);
+    setFilteredEmployees(filteredItems);
   };
 
   return (
@@ -31,7 +35,7 @@ function App() {
 
       {error && <p>There was an error loading the users</p>}
 
-      {!loading && !error && <ItemsList items={filteredUsers} />}
+      {!loading && !error && <ItemsList items={filteredEmployees} />}
     </>
   );
 }

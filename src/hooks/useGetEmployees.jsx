@@ -4,6 +4,8 @@ export const useGetEmployees = () => {
   const [employees, setEmployees] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  
+
 
   useEffect(() => {
     fetch("http://localhost:3000/employees")
@@ -16,7 +18,7 @@ export const useGetEmployees = () => {
 
       .then((data) => {
         console.log("Dados recebidos:", data);
-        setEmployees(data || []);
+        setEmployees(data);
       })
       .catch((err) => {
         console.error("Erro na requisição:", err);
