@@ -2,36 +2,21 @@ import { useEffect } from "react";
 import { useState } from "react";
 import ItemsList from "./components/ItemList";
 import Input from "./components/Input";
+import { useGetUsers } from "./hooks/useGetUsers";
 
 function App() {
-  const [apiUsers, setApiUsers] = useState([]);
-
-  const [loading, setLoading] = useState(true);
-
-  const [error, setError] = useState(null);
+  const { users, loading, error } = useGetUsers();
 
   const [filteredUsers, setFilteredUsers] = useState([]);
 
   useEffect(() => {
-    fetch("https://dummyjson.com/users")
-      .then((response) => response.json())
-      .then((data) => {
-        setApiUsers(data.users);
-        // update the filteredUsers state
-        setFilteredUsers(data.users);
-      })
-      .catch((err) => {
-        console.log(err);
-
-        setError(err);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, []);
+    if (Object.keys(users).length > 0) {
+      setFilteredUsers(users)
+    }
+  }, [users]);
 
   const filterItems = (searchTerm) => {
-    const filteredItems = apiUsers.filter((user) =>
+    const filteredItems = users.filter((user) =>
       user.firstName.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
