@@ -4,8 +4,6 @@ export const useGetEmployees = () => {
   const [employees, setEmployees] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  
-
 
   useEffect(() => {
     fetch("http://localhost:3000/employees")
