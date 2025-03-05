@@ -1,8 +1,10 @@
-# React + Vite
+Olá, tudo bem? Vamos entender o que esse projeto faz.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Implementei um filtro de pesquisa em tempo real, ou seja, esse recurso atualiza os itens exibidos conforme o usuário digita e mostra todos os itens novamente se o filtro de pesquisa estiver vazio.
+Reformulei o código para tornar os componentes reutilizáveis. Até a chamada de API foi refatorada em um hook personalizado.
 
-Currently, two official plugins are available:
+Todos os dados são mostrados em uma tabela responsiva!
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Pode testar em diferentes dispositivos!
+
+Deploy na vercel: https://filtro-de-pesquisa.vercel.app/
