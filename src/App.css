@@ -155,21 +155,6 @@ table tbody tr td::before {
 }
 
 /* INPUT */
-.InputContainer {
-  height: 40px;
-  width: 15rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgb(255, 255, 255);
-  overflow: hidden;
-  cursor: pointer;
-  padding-left: 15px;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.075);
-  border: 1px solid #DFDFDF;
-  border-radius: 8px;
-  
-}
 
 .label {
   position: relative;
@@ -180,8 +165,7 @@ table tbody tr td::before {
   border: 1px solid #DFDFDF;
   padding: 15px 8px 15px 10px;
   text-align: left;
-  background: #FFFFFF;
-  color: #9E9E9E;
+  background: var(--primary-color-back);
 
   .icon {
     position: absolute;
@@ -196,7 +180,6 @@ table tbody tr td::before {
     background-color: transparent;
     outline: none;
     border: none;
-    color: #c5c5c5;
     font-size: 16px;
     
   }
