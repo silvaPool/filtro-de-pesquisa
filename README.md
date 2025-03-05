@@ -7,4 +7,6 @@ Todos os dados são mostrados em uma tabela responsiva!
 
 Pode testar em diferentes dispositivos!
 
+Atenção: Há um erro no input, amanhã vou consertar.
+
 Deploy na vercel: https://filtro-de-pesquisa.vercel.app/
