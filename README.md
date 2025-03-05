@@ -7,6 +7,7 @@ Todos os dados são mostrados em uma tabela responsiva!
 
 Pode testar em diferentes dispositivos!
 
-Atenção: Há um erro no input, amanhã vou consertar.
+Dificuldades:
+Eu tive dificuldades na hora de aplicar responsividade na tabela. Depois de um tempo errando, resolvi criar uma versão desktop e uma mobile, pois acredito ser a maneira mais correta.
 
 Deploy na vercel: https://filtro-de-pesquisa.vercel.app/
